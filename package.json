@@ -2,6 +2,7 @@
   "name": "ai-perks",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,9 +10,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@heroui/react": "^2.8.9",
+    "framer-motion": "^12.34.3",
+    "i18next": "^25.8.13",
+    "lucide-react": "^0.575.0",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-i18next": "^16.5.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
