@@ -1,4 +1,9 @@
 {
+  "common": {
+    "pagination": {
+      "showing": "Showing {{start}}-{{end}} of {{total}}"
+    }
+  },
   "brand": "AI Perks",
   "header": {
     "perks": "Perks",
@@ -15,5 +20,34 @@
     "subtitle": "Sign in to discover AI perks",
     "signInGoogle": "Sign In with Google",
     "authCaption": "Secure authentication with Supabase"
+  },
+  "perks": {
+    "title": "Explore Perks",
+    "subtitle": "Discover exclusive credits and offers from leading AI providers",
+    "table": {
+      "company": "Company",
+      "title": "Title",
+      "category": "Category",
+      "credits": "Credits",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "getPerk": "Get Perk",
+    "status": {
+      "active": "Active",
+      "expired": "Expired",
+      "coming_soon": "Coming Soon"
+    },
+    "category": {
+      "llm": "LLM",
+      "code": "Code",
+      "image": "Image",
+      "cloud": "Cloud",
+      "api": "API"
+    },
+    "pagination": {
+      "showing": "Showing {{start}}-{{end}} of {{total}} perks"
+    },
+    "empty": "No perks found"
   }
 }

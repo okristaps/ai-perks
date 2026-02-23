@@ -9,5 +9,5 @@
 }
 
 body {
-  @apply bg-background text-foreground transition-colors duration-200;
+  @apply bg-background text-foreground;
 }

@@ -1,23 +1,31 @@
 import { getSupabaseServerClient } from "@lib/supabase/server";
-import { redirect } from "next/navigation";
-import en from "@locales/en.json";
+import { PerksView } from "@components";
+import type { Perk } from "@lib";
 
-export default async function Home() {
+const PAGE_SIZE = 10;
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, Number(pageParam) || 1);
+  const start = (page - 1) * PAGE_SIZE;
+
   const supabase = await getSupabaseServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect("/login");
-  }
+  const { data: perks, count } = await supabase
+    .from("perks")
+    .select("*", { count: "exact" })
+    .order("created_at", { ascending: false })
+    .range(start, start + PAGE_SIZE - 1);
 
   return (
-    <div className="flex items-center justify-center py-20 px-4 min-h-[calc(100vh-120px)]">
-      <div className="w-full max-w-md text-center">
-        <h1 className="text-3xl font-bold">{en.home.welcome}</h1>
-        <p className="text-default-500 mt-2">{user.email}</p>
-      </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <PerksView
+        perks={(perks as Perk[]) ?? []}
+        total={count ?? 0}
+      />
     </div>
   );
 }

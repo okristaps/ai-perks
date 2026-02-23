@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useCallback, useLayoutEffect, useSyncExternalStore } from "react";
+import React, { createContext, useCallback, useLayoutEffect, useRef, useSyncExternalStore } from "react";
 
 export enum Theme {
   Light = "light",
@@ -43,8 +43,14 @@ function getServerSnapshot(): Theme {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
+  const hasMounted = useRef(false);
   useLayoutEffect(() => {
+    if (!hasMounted.current) {
+      hasMounted.current = true;
+      return;
+    }
     document.documentElement.classList.toggle(Theme.Dark, theme === Theme.Dark);
+    document.documentElement.style.colorScheme = theme === Theme.Dark ? Theme.Dark : Theme.Light;
   }, [theme]);
 
   const toggleTheme = useCallback(() => {
