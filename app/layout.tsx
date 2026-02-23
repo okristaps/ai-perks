@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Header, Footer } from "@components";
+import { getSupabaseServerClient } from "@lib/supabase/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,11 +20,15 @@ export const metadata: Metadata = {
   description: "Perks and credits from AI companies",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = await getSupabaseServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -33,14 +38,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
         <Providers>
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
+          <Header user={user} />
+          <main className="flex-1">{children}</main>
           <Footer />
         </Providers>
       </body>

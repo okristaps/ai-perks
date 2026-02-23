@@ -3,7 +3,8 @@
   "header": {
     "perks": "Perks",
     "about": "About",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
   },
   "footer": {
     "privacy": "Privacy",
@@ -12,10 +13,7 @@
   "home": {
     "welcome": "Welcome!",
     "subtitle": "Sign in to discover AI perks",
-    "emailLabel": "Email",
-    "emailPlaceholder": "you@example.com",
     "signInGoogle": "Sign In with Google",
-    "signUp": "Sign Up",
     "authCaption": "Secure authentication with Supabase"
   }
 }

@@ -26,6 +26,7 @@
       "@context/*": ["./app/context/*"],
       "@hooks": ["./app/hooks"],
       "@hooks/*": ["./app/hooks/*"],
+      "@config": ["./app/config"],
       "@locales/*": ["./app/locales/*"],
       "@lib": ["./app/lib"],
       "@lib/*": ["./app/lib/*"]
