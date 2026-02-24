@@ -11,21 +11,8 @@ import {
 } from "@heroui/react";
 import { ExternalLink } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import type { Perk, PerkStatus, PerkCategory } from "@lib";
-
-const STATUS_COLOR_MAP: Record<PerkStatus, "success" | "danger" | "warning"> = {
-  active: "success",
-  expired: "danger",
-  coming_soon: "warning",
-};
-
-const CATEGORY_COLOR_MAP: Record<PerkCategory, "primary" | "secondary" | "warning" | "success" | "default"> = {
-  llm: "primary",
-  code: "secondary",
-  image: "warning",
-  cloud: "success",
-  api: "default",
-};
+import type { Perk } from "@lib/types";
+import { CATEGORY_COLOR_MAP, STATUS_COLOR_MAP } from "@lib/constants";
 
 interface PerksCardsProps {
   perks: Perk[];

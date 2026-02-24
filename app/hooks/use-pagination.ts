@@ -2,8 +2,7 @@
 
 import { useCallback, useTransition, type RefObject } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-const DEFAULT_PAGE_SIZE = 10;
+import { PAGE_SIZE as DEFAULT_PAGE_SIZE, SearchParam } from "@lib/constants";
 
 interface UsePaginationOptions {
   total: number;
@@ -15,7 +14,7 @@ interface UsePaginationOptions {
 export function usePagination({
   total,
   pageSize = DEFAULT_PAGE_SIZE,
-  paramName = "page",
+  paramName = SearchParam.Page,
   scrollRef,
 }: UsePaginationOptions) {
   const router = useRouter();

@@ -45,9 +45,16 @@
       "cloud": "Cloud",
       "api": "API"
     },
+    "toolbar": {
+      "searchPlaceholder": "Search by company, title, or description...",
+      "category": "Category",
+      "status": "Status",
+      "clearAll": "Clear filters"
+    },
     "pagination": {
       "showing": "Showing {{start}}-{{end}} of {{total}} perks"
     },
-    "empty": "No perks found"
+    "empty": "No perks found",
+    "noResults": "No perks match your filters"
   }
 }
