@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Perk, PerkCategory, PerkStatus } from "../types";
-import { PAGE_SIZE } from "../constants";
+import { ACTIVE_SUBSCRIPTION_STATUSES, PAGE_SIZE } from "../constants";
 import { getSupabaseServerClient } from "./server";
 
 export interface PerksFilters {
@@ -35,7 +35,7 @@ export class PerksService {
       .from("subscriptions")
       .select("id")
       .eq("user_id", user.id)
-      .in("status", ["active", "trialing"])
+      .in("status", [...ACTIVE_SUBSCRIPTION_STATUSES])
       .limit(1)
       .maybeSingle();
 

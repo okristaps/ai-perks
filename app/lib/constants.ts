@@ -3,6 +3,8 @@ import type { PerkCategory, PerkStatus } from "./types";
 export const PERK_CATEGORIES: PerkCategory[] = ["llm", "code", "image", "cloud", "api"];
 export const PERK_STATUSES: PerkStatus[] = ["active", "expired", "coming_soon"];
 
+export const ACTIVE_SUBSCRIPTION_STATUSES = ["active", "trialing"] as const;
+
 export const PAGE_SIZE = 10;
 export const DEBOUNCE_MS = 300;
 

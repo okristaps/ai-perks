@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Checkout } from "@polar-sh/nextjs";
 import { getSupabaseServerClient } from "@lib/supabase/server";
+import { ACTIVE_SUBSCRIPTION_STATUSES } from "@lib/constants";
 
 const handler = Checkout({
   accessToken: process.env.POLAR_ACCESS_TOKEN!,
@@ -22,7 +23,7 @@ export async function GET(req: NextRequest) {
     .from("subscriptions")
     .select("id")
     .eq("user_id", user.id)
-    .in("status", ["active", "trialing"])
+    .in("status", [...ACTIVE_SUBSCRIPTION_STATUSES])
     .limit(1)
     .maybeSingle();
 
