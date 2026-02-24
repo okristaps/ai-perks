@@ -21,6 +21,12 @@
     "signInGoogle": "Sign In with Google",
     "authCaption": "Secure authentication with Supabase"
   },
+  "auth": {
+    "modal": {
+      "title": "Sign in to continue",
+      "subtitle": "You need to sign in to access AI perks"
+    }
+  },
   "perks": {
     "title": "Explore Perks",
     "subtitle": "Discover exclusive credits and offers from leading AI providers",
@@ -33,6 +39,7 @@
       "actions": "Actions"
     },
     "getPerk": "Get Perk",
+    "subscribed": "Subscribed",
     "status": {
       "active": "Active",
       "expired": "Expired",

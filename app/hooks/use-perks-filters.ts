@@ -30,14 +30,12 @@ export function usePerksFilters(): UsePerksFiltersReturn {
   const [searchInput, setSearchInput] = useState(urlSearch);
   const debouncedSearch = useDebounce(searchInput, DEBOUNCE_MS);
 
-  // Sync URL → local input on external navigation (back/forward)
   const [prevUrlSearch, setPrevUrlSearch] = useState(urlSearch);
   if (urlSearch !== prevUrlSearch) {
     setPrevUrlSearch(urlSearch);
     setSearchInput(urlSearch);
   }
 
-  // Shared URL push helper — always resets page to 1
   const pushParams = useCallback(
     (updater: (params: URLSearchParams) => void) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -50,7 +48,6 @@ export function usePerksFilters(): UsePerksFiltersReturn {
     [router, searchParams, startTransition],
   );
 
-  // Sync debounced search → URL
   useEffect(() => {
     const currentUrlSearch = searchParams.get(SearchParam.Search) ?? "";
     if (debouncedSearch !== currentUrlSearch) {

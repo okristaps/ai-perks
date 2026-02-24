@@ -19,6 +19,7 @@ export default async function Home({
     category: params.category,
     status: params.status,
   });
+  const hasActiveSubscription = await perksService.hasActiveSubscription();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
@@ -27,6 +28,7 @@ export default async function Home({
         total={total}
         availableCategories={availableCategories}
         availableStatuses={availableStatuses}
+        hasActiveSubscription={hasActiveSubscription}
       />
     </div>
   );

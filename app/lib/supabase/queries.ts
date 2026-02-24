@@ -24,6 +24,24 @@ export class PerksService {
     return new PerksService(supabase);
   }
 
+  async hasActiveSubscription(): Promise<boolean> {
+    const {
+      data: { user },
+    } = await this.supabase.auth.getUser();
+
+    if (!user) return false;
+
+    const { data } = await this.supabase
+      .from("subscriptions")
+      .select("id")
+      .eq("user_id", user.id)
+      .in("status", ["active", "trialing"])
+      .limit(1)
+      .maybeSingle();
+
+    return !!data;
+  }
+
   async getPerks(page: number, filters: PerksFilters): Promise<PerksResult> {
     const start = (page - 1) * PAGE_SIZE;
 

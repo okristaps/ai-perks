@@ -14,9 +14,10 @@ interface PerksViewProps {
   total: number;
   availableCategories: PerkCategory[];
   availableStatuses: PerkStatus[];
+  hasActiveSubscription: boolean;
 }
 
-export function PerksView({ perks, total, availableCategories, availableStatuses }: PerksViewProps) {
+export function PerksView({ perks, total, availableCategories, availableStatuses, hasActiveSubscription }: PerksViewProps) {
   const { t } = useTranslation();
   const listRef = useRef<HTMLDivElement>(null);
   const { page, setPage, totalPages, start, end, isPending: isPaginationPending } = usePagination({
@@ -62,8 +63,8 @@ export function PerksView({ perks, total, availableCategories, availableStatuses
         isPending={isPending}
         pagination={{ page, setPage, totalPages, start, end, total }}
         listRef={listRef}
-        renderTable={() => <PerksTable perks={perks} />}
-        renderCards={() => <PerksCards perks={perks} />}
+        renderTable={() => <PerksTable perks={perks} hasActiveSubscription={hasActiveSubscription} />}
+        renderCards={() => <PerksCards perks={perks} hasActiveSubscription={hasActiveSubscription} />}
         showingTextKey="perks.pagination.showing"
       />
     </div>
